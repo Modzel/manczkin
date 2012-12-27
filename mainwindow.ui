@@ -77,8 +77,20 @@ Menu</string>
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuNew">
+    <property name="title">
+     <string>New</string>
+    </property>
+    <addaction name="actionHostServer"/>
+   </widget>
+   <addaction name="menuNew"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionHostServer">
+   <property name="text">
+    <string>HostServer</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

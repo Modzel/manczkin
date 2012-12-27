@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sat Dec 22 17:58:49 2012
+** Created: Sun Dec 23 17:46:43 2012
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -16,6 +16,7 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QHeaderView>
 #include <QtGui/QMainWindow>
+#include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QPlainTextEdit>
 #include <QtGui/QPushButton>
@@ -27,12 +28,14 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionHostServer;
     QWidget *centralwidget;
     QPushButton *host;
     QPushButton *quit;
     QPushButton *join;
     QPlainTextEdit *plainTextEdit;
     QMenuBar *menubar;
+    QMenu *menuNew;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -40,6 +43,8 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
+        actionHostServer = new QAction(MainWindow);
+        actionHostServer->setObjectName(QString::fromUtf8("actionHostServer"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         host = new QPushButton(centralwidget);
@@ -58,10 +63,15 @@ public:
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 25));
+        menuNew = new QMenu(menubar);
+        menuNew->setObjectName(QString::fromUtf8("menuNew"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
+
+        menubar->addAction(menuNew->menuAction());
+        menuNew->addAction(actionHostServer);
 
         retranslateUi(MainWindow);
 
@@ -71,11 +81,13 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
+        actionHostServer->setText(QApplication::translate("MainWindow", "HostServer", 0, QApplication::UnicodeUTF8));
         host->setText(QApplication::translate("MainWindow", "HostServer", 0, QApplication::UnicodeUTF8));
         quit->setText(QApplication::translate("MainWindow", "Quit", 0, QApplication::UnicodeUTF8));
         join->setText(QApplication::translate("MainWindow", "JoinGame", 0, QApplication::UnicodeUTF8));
         plainTextEdit->setPlainText(QApplication::translate("MainWindow", "Manczkin\n"
 "Menu", 0, QApplication::UnicodeUTF8));
+        menuNew->setTitle(QApplication::translate("MainWindow", "New", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

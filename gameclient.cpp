@@ -1,13 +1,22 @@
 #include "gameclient.h"
 
-GameClient::GameClient(QObject *parent, QTcpSocket *socket) :
-    QObject(parent)
+GameClient::GameClient(int id, QObject *parent) :
+        QObject(parent)
 {
-    this->_socket = socket;
-    this->_socket->write("JESTEM PODLACZONY");
-    this->_socket->waitForBytesWritten();
+    this->_socketDescriptor = id;
 }
 
-void GameClient::endConnection(){
-    this->_socket->close();
+
+
+void GameClient::readyRead(){
+    QByteArray Data = this->_socket->readAll();
+
+    qDebug() << this->_socketDescriptor << "8==========>";
+
+    this->_socket->write(Data);
+}
+
+void GameClient::disconnected(){
+    this->_socket->deleteLater();
+    exit(0);
 }

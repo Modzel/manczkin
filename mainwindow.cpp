@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "gameserver.h"
-#include "gameclient.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -29,15 +27,27 @@ void MainWindow::changeEvent(QEvent *e)
 
 void MainWindow::on_host_clicked()
 {
-    GameServer gameServer;
+    dialogServer = new DialogServer(this);
+    dialogServer->show();
+
+
 }
 
 void MainWindow::on_join_clicked()
 {
-
+    dialogGame = new DialogGame(this);
+    dialogGame->show();
 }
 
 void MainWindow::on_quit_clicked()
 {
     exit(0);
+}
+
+void MainWindow::on_actionHostServer_triggered(bool checked)
+{
+    if(checked){
+    dialogServer = new DialogServer(this);
+    dialogServer->show();
+    }
 }

@@ -1,27 +1,20 @@
 #ifndef GAMESERVER_H
 #define GAMESERVER_H
 
-#include <QObject>
-#include <QDebug>
 #include <QTcpServer>
-#include <QTcpSocket>
-#include "gameclient.h"
-#include <QList>
+#include <QDebug>
+#include "thread.h"
 
-class GameServer : public QObject
+class GameServer : public QTcpServer
 {
-    Q_OBJECT
+Q_OBJECT
 public:
     explicit GameServer(QObject *parent = 0);
-
+    void StartServer();
+    void incomingConnection(int socketDescriptor);
+signals:
 
 public slots:
-    void newConnection();
-
-private:
-    QTcpServer *_server;
-    QTcpSocket *_socket;
-    QList<GameClient *>  connectedPlayers;
 
 };
 

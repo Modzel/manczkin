@@ -8,8 +8,18 @@ TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
     gameserver.cpp \
-    gameclient.cpp
+    dialogserver.cpp \
+    dialoggame.cpp \
+    deck.cpp \
+    player.cpp \
+    thread.cpp
 HEADERS += mainwindow.h \
     gameserver.h \
-    gameclient.h
-FORMS += mainwindow.ui
+    dialogserver.h \
+    dialoggame.h \
+    deck.h \
+    player.h \
+    thread.h
+FORMS += mainwindow.ui \
+    dialogserver.ui \
+    dialoggame.ui

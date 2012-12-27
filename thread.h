@@ -1,16 +1,18 @@
-#ifndef GAMECLIENT_H
-#define GAMECLIENT_H
+#ifndef THREAD_H
+#define THREAD_H
 
+#include <QThread>
 #include <QTcpSocket>
 #include <QDebug>
 
-class GameClient : public QObject
+class Thread : public QThread
 {
 Q_OBJECT
 public:
     QTcpSocket *_socket;
     int _socketDescriptor;
-    explicit GameClient(int id, QObject *parent = 0);
+    explicit Thread(int id, QObject *parent = 0);
+    void run();
 
 signals:
     void error(QTcpSocket::SocketError socketError);
@@ -23,4 +25,4 @@ private:
 
 };
 
-#endif // GAMECLIENT_H
+#endif // THREAD_H
